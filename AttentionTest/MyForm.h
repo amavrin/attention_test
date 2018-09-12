@@ -445,7 +445,7 @@ namespace AttentionTest {
 		this->button3->Enabled = true;
 	}
 	
-	// следующие методы выдел€ют содержимое пол€ ввода при переходе фокуса по кнопке Tab
+	// следующие методы выдел€ют содержимое пол€ ввода при переходе фокуса по Tab
 	private: System::Void numericUpDown1_Enter(System::Object^  sender, System::EventArgs^  e) {
 		this->numericUpDown1->Select(0, this->numericUpDown1->Text->Length);
 	}
