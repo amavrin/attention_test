@@ -147,6 +147,8 @@ namespace AttentionTest {
 			this->numericUpDown1->Size = System::Drawing::Size(44, 20);
 			this->numericUpDown1->TabIndex = 5;
 			this->numericUpDown1->Visible = false;
+			this->numericUpDown1->Enter += gcnew System::EventHandler(this, &MyForm::numericUpDown1_Enter);
+			this->numericUpDown1->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::numericUpDown1_MouseClick);
 			// 
 			// numericUpDown2
 			// 
@@ -156,6 +158,8 @@ namespace AttentionTest {
 			this->numericUpDown2->Size = System::Drawing::Size(41, 20);
 			this->numericUpDown2->TabIndex = 6;
 			this->numericUpDown2->Visible = false;
+			this->numericUpDown2->Enter += gcnew System::EventHandler(this, &MyForm::numericUpDown2_Enter);
+			this->numericUpDown2->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::numericUpDown2_MouseClick);
 			// 
 			// numericUpDown3
 			// 
@@ -165,6 +169,8 @@ namespace AttentionTest {
 			this->numericUpDown3->Size = System::Drawing::Size(41, 20);
 			this->numericUpDown3->TabIndex = 7;
 			this->numericUpDown3->Visible = false;
+			this->numericUpDown3->Enter += gcnew System::EventHandler(this, &MyForm::numericUpDown3_Enter);
+			this->numericUpDown3->MouseClick += gcnew System::Windows::Forms::MouseEventHandler(this, &MyForm::numericUpDown3_MouseClick);
 			// 
 			// button3
 			// 
@@ -437,6 +443,28 @@ namespace AttentionTest {
 		this->button4->Enabled = false;
 		// активировать кнопку "проверить"
 		this->button3->Enabled = true;
+	}
+	
+	// следующие методы выдел€ют содержимое пол€ ввода при переходе фокуса по кнопке Tab
+	private: System::Void numericUpDown1_Enter(System::Object^  sender, System::EventArgs^  e) {
+		this->numericUpDown1->Select(0, this->numericUpDown1->Text->Length);
+	}
+	private: System::Void numericUpDown2_Enter(System::Object^  sender, System::EventArgs^  e) {
+		this->numericUpDown2->Select(0, this->numericUpDown2->Text->Length);
+	}
+	private: System::Void numericUpDown3_Enter(System::Object^  sender, System::EventArgs^  e) {
+		this->numericUpDown3->Select(0, this->numericUpDown3->Text->Length);
+	}
+
+	// следующие три метода выдел€ют содержимое пол€ ввода при клике левой кнопкой мыши
+	private: System::Void numericUpDown1_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+		this->numericUpDown1->Select(0, this->numericUpDown1->Text->Length);
+	}
+	private: System::Void numericUpDown2_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+		this->numericUpDown2->Select(0, this->numericUpDown2->Text->Length);
+	}
+	private: System::Void numericUpDown3_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
+		this->numericUpDown3->Select(0, this->numericUpDown3->Text->Length);
 	}
 };
 }
