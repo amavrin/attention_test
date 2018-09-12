@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <stdlib.h>
 #include <time.h>
 
@@ -124,7 +124,7 @@ namespace AttentionTest {
 			this->button1->Name = L"button1";
 			this->button1->Size = System::Drawing::Size(162, 23);
 			this->button1->TabIndex = 3;
-			this->button1->Text = L"Начать тест";
+			this->button1->Text = L"РќР°С‡Р°С‚СЊ С‚РµСЃС‚";
 			this->button1->UseVisualStyleBackColor = true;
 			this->button1->Click += gcnew System::EventHandler(this, &MyForm::button1_Click);
 			// 
@@ -135,7 +135,7 @@ namespace AttentionTest {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(160, 25);
 			this->button2->TabIndex = 4;
-			this->button2->Text = L"Заново";
+			this->button2->Text = L"Р—Р°РЅРѕРІРѕ";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
@@ -179,7 +179,7 @@ namespace AttentionTest {
 			this->button3->Name = L"button3";
 			this->button3->Size = System::Drawing::Size(162, 24);
 			this->button3->TabIndex = 8;
-			this->button3->Text = L"Проверить";
+			this->button3->Text = L"РџСЂРѕРІРµСЂРёС‚СЊ";
 			this->button3->UseVisualStyleBackColor = true;
 			this->button3->Click += gcnew System::EventHandler(this, &MyForm::button3_Click);
 			// 
@@ -190,19 +190,19 @@ namespace AttentionTest {
 			this->button4->Name = L"button4";
 			this->button4->Size = System::Drawing::Size(162, 24);
 			this->button4->TabIndex = 9;
-			this->button4->Text = L"Ввести ответы";
+			this->button4->Text = L"Р’РІРµСЃС‚Рё РѕС‚РІРµС‚С‹";
 			this->button4->UseVisualStyleBackColor = true;
 			this->button4->Click += gcnew System::EventHandler(this, &MyForm::button4_Click);
 			// 
 			// comboBox1
 			// 
 			this->comboBox1->FormattingEnabled = true;
-			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"Простой", L"Средний", L"Сложный" });
+			this->comboBox1->Items->AddRange(gcnew cli::array< System::Object^  >(3) { L"РџСЂРѕСЃС‚РѕР№", L"РЎСЂРµРґРЅРёР№", L"РЎР»РѕР¶РЅС‹Р№" });
 			this->comboBox1->Location = System::Drawing::Point(17, 38);
 			this->comboBox1->Name = L"comboBox1";
 			this->comboBox1->Size = System::Drawing::Size(67, 21);
 			this->comboBox1->TabIndex = 10;
-			this->comboBox1->Text = L"Простой";
+			this->comboBox1->Text = L"РџСЂРѕСЃС‚РѕР№";
 			// 
 			// label4
 			// 
@@ -211,7 +211,7 @@ namespace AttentionTest {
 			this->label4->Name = L"label4";
 			this->label4->Size = System::Drawing::Size(51, 13);
 			this->label4->TabIndex = 11;
-			this->label4->Text = L"Уровень";
+			this->label4->Text = L"РЈСЂРѕРІРµРЅСЊ";
 			// 
 			// label5
 			// 
@@ -220,7 +220,7 @@ namespace AttentionTest {
 			this->label5->Name = L"label5";
 			this->label5->Size = System::Drawing::Size(52, 13);
 			this->label5->TabIndex = 12;
-			this->label5->Text = L"Попыток";
+			this->label5->Text = L"РџРѕРїС‹С‚РѕРє";
 			// 
 			// label6
 			// 
@@ -238,7 +238,7 @@ namespace AttentionTest {
 			this->label7->Name = L"label7";
 			this->label7->Size = System::Drawing::Size(32, 13);
 			this->label7->TabIndex = 14;
-			this->label7->Text = L"Очки";
+			this->label7->Text = L"РћС‡РєРё";
 			// 
 			// label8
 			// 
@@ -271,7 +271,7 @@ namespace AttentionTest {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Name = L"MyForm";
-			this->Text = L"Тест";
+			this->Text = L"РўРµСЃС‚";
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown2))->EndInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown3))->EndInit();
@@ -281,10 +281,10 @@ namespace AttentionTest {
 		}
 #pragma endregion
 
-	// нажата кнопка "начать тест"; переход в состояние "демонстрация"
+	// РЅР°Р¶Р°С‚Р° РєРЅРѕРїРєР° "РЅР°С‡Р°С‚СЊ С‚РµСЃС‚"; РїРµСЂРµС…РѕРґ РІ СЃРѕСЃС‚РѕСЏРЅРёРµ "РґРµРјРѕРЅСЃС‚СЂР°С†РёСЏ"
 	private: System::Void button1_Click(System::Object^  sender, System::EventArgs^  e) {
 
-		// определить заданный уровень сложности
+		// РѕРїСЂРµРґРµР»РёС‚СЊ Р·Р°РґР°РЅРЅС‹Р№ СѓСЂРѕРІРµРЅСЊ СЃР»РѕР¶РЅРѕСЃС‚Рё
 		int level = 0;
 		if (this->comboBox1->SelectedIndex == 0) {
 			level = 9;
@@ -295,7 +295,7 @@ namespace AttentionTest {
 		else {
 			level = 999;
 		}
-		// сгенерировать три значения для запоминания в промежутке от 0 до значения, соответствующего уровню сложности
+		// СЃРіРµРЅРµСЂРёСЂРѕРІР°С‚СЊ С‚СЂРё Р·РЅР°С‡РµРЅРёСЏ РґР»СЏ Р·Р°РїРѕРјРёРЅР°РЅРёСЏ РІ РїСЂРѕРјРµР¶СѓС‚РєРµ РѕС‚ 0 РґРѕ Р·РЅР°С‡РµРЅРёСЏ, СЃРѕРѕС‚РІРµС‚СЃС‚РІСѓСЋС‰РµРіРѕ СѓСЂРѕРІРЅСЋ СЃР»РѕР¶РЅРѕСЃС‚Рё
 		const int num = 3;
 		int testnum[3];
 		srand((int)time(0));
@@ -303,41 +303,41 @@ namespace AttentionTest {
 			testnum[i] = (rand() % level);
 		}
 
-		// сбросить цвет метки
+		// СЃР±СЂРѕСЃРёС‚СЊ С†РІРµС‚ РјРµС‚РєРё
 		this->label1->BackColor = System::Drawing::Color::Transparent;
 		this->label2->BackColor = System::Drawing::Color::Transparent;
 		this->label3->BackColor = System::Drawing::Color::Transparent;
 
-		// заполнить значения для запоминания
+		// Р·Р°РїРѕР»РЅРёС‚СЊ Р·РЅР°С‡РµРЅРёСЏ РґР»СЏ Р·Р°РїРѕРјРёРЅР°РЅРёСЏ
 		this->label1->Text = Convert::ToString(testnum[0]);
 		this->label2->Text = Convert::ToString(testnum[1]);
 		this->label3->Text = Convert::ToString(testnum[2]);
 
-		// показать значения пользователю
+		// РїРѕРєР°Р·Р°С‚СЊ Р·РЅР°С‡РµРЅРёСЏ РїРѕР»СЊР·РѕРІР°С‚РµР»СЋ
 		this->label1->Visible = true;
 		this->label2->Visible = true;
 		this->label3->Visible = true;
 
-		// сделать кнопку "начать тест" неактивной
+		// СЃРґРµР»Р°С‚СЊ РєРЅРѕРїРєСѓ "РЅР°С‡Р°С‚СЊ С‚РµСЃС‚" РЅРµР°РєС‚РёРІРЅРѕР№
 		this->button1->Enabled = false;
-		// активировать кнопку "заново"
+		// Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ РєРЅРѕРїРєСѓ "Р·Р°РЅРѕРІРѕ"
 		this->button2->Enabled = true;
-		// активировать кнопку "ввести ответы"
+		// Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ РєРЅРѕРїРєСѓ "РІРІРµСЃС‚Рё РѕС‚РІРµС‚С‹"
 		this->button4->Enabled = true;
 
-		// убрать возможность задавать уровень сложности
+		// СѓР±СЂР°С‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ Р·Р°РґР°РІР°С‚СЊ СѓСЂРѕРІРµРЅСЊ СЃР»РѕР¶РЅРѕСЃС‚Рё
 		this->comboBox1->Enabled = false;
 	}
 
-	// нажата кнопка "заново"
+	// РЅР°Р¶Р°С‚Р° РєРЅРѕРїРєР° "Р·Р°РЅРѕРІРѕ"
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		int try_count = Convert::ToInt16(this->label6->Text);
-		// скрыть значения для запоминания
+		// СЃРєСЂС‹С‚СЊ Р·РЅР°С‡РµРЅРёСЏ РґР»СЏ Р·Р°РїРѕРјРёРЅР°РЅРёСЏ
 		this->label1->Visible = false;
 		this->label2->Visible = false;
 		this->label3->Visible = false;
 
-		// показать поля для ввода
+		// РїРѕРєР°Р·Р°С‚СЊ РїРѕР»СЏ РґР»СЏ РІРІРѕРґР°
 		this->numericUpDown1->Visible = false;
 		this->numericUpDown2->Visible = false;
 		this->numericUpDown3->Visible = false;
@@ -349,26 +349,26 @@ namespace AttentionTest {
 		this->button3->Enabled = false;
 		this->button4->Enabled = false;
 
-		// разрешить задавать уровень сложности
+		// СЂР°Р·СЂРµС€РёС‚СЊ Р·Р°РґР°РІР°С‚СЊ СѓСЂРѕРІРµРЅСЊ СЃР»РѕР¶РЅРѕСЃС‚Рё
 		this->comboBox1->Enabled = true;
 	}
 
-	// нажата кнопка "проверить"
+	// РЅР°Р¶Р°С‚Р° РєРЅРѕРїРєР° "РїСЂРѕРІРµСЂРёС‚СЊ"
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
 			 String^ result1 = Convert::ToString(this->numericUpDown1->Value);
 			 String^ result2 = Convert::ToString(this->numericUpDown2->Value);
 			 String^ result3 = Convert::ToString(this->numericUpDown3->Value);
 
-			 // получить текущее значение счёта и уровня сложности
+			 // РїРѕР»СѓС‡РёС‚СЊ С‚РµРєСѓС‰РµРµ Р·РЅР°С‡РµРЅРёРµ СЃС‡С‘С‚Р° Рё СѓСЂРѕРІРЅСЏ СЃР»РѕР¶РЅРѕСЃС‚Рё
 			 int score = Convert::ToInt16(this->label8->Text);
 			 int level = this->comboBox1->SelectedIndex;
 
-			 // показать исходные значения для запоминания
+			 // РїРѕРєР°Р·Р°С‚СЊ РёСЃС…РѕРґРЅС‹Рµ Р·РЅР°С‡РµРЅРёСЏ РґР»СЏ Р·Р°РїРѕРјРёРЅР°РЅРёСЏ
 			 this->label1->Visible = true;
 			 this->label2->Visible = true;
 			 this->label3->Visible = true;
 
-			 // убрать возможность изменять данные, введённые пользователем
+			 // СѓР±СЂР°С‚СЊ РІРѕР·РјРѕР¶РЅРѕСЃС‚СЊ РёР·РјРµРЅСЏС‚СЊ РґР°РЅРЅС‹Рµ, РІРІРµРґС‘РЅРЅС‹Рµ РїРѕР»СЊР·РѕРІР°С‚РµР»РµРј
 			 this->numericUpDown1->Enabled = false;
 			 this->numericUpDown2->Enabled = false;
 			 this->numericUpDown3->Enabled = false;
@@ -398,30 +398,30 @@ namespace AttentionTest {
 				 this->label3->BackColor = System::Drawing::Color::Orange;
 			 }
 
-			 // для уровня "простой" за каждый правильный ответ одно очко
-			 // для "средний" - 4
-			 // для "сложный" - 9
+			 // РґР»СЏ СѓСЂРѕРІРЅСЏ "РїСЂРѕСЃС‚РѕР№" Р·Р° РєР°Р¶РґС‹Р№ РїСЂР°РІРёР»СЊРЅС‹Р№ РѕС‚РІРµС‚ РѕРґРЅРѕ РѕС‡РєРѕ
+			 // РґР»СЏ "СЃСЂРµРґРЅРёР№" - 4
+			 // РґР»СЏ "СЃР»РѕР¶РЅС‹Р№" - 9
 			 score += correct * (level + 1) * (level + 1);
-			 // за все три правильные ответа на уровне "простой" - 2 очка,
-			 // на уровне "средний" - 8
-			 // на уровне "сложный" - 18
+			 // Р·Р° РІСЃРµ С‚СЂРё РїСЂР°РІРёР»СЊРЅС‹Рµ РѕС‚РІРµС‚Р° РЅР° СѓСЂРѕРІРЅРµ "РїСЂРѕСЃС‚РѕР№" - 2 РѕС‡РєР°,
+			 // РЅР° СѓСЂРѕРІРЅРµ "СЃСЂРµРґРЅРёР№" - 8
+			 // РЅР° СѓСЂРѕРІРЅРµ "СЃР»РѕР¶РЅС‹Р№" - 18
 			 if (correct == 3) score += 2 * (level + 1) * (level + 1);
-			 // вывести текущий счёт
+			 // РІС‹РІРµСЃС‚Рё С‚РµРєСѓС‰РёР№ СЃС‡С‘С‚
 			 this->label8->Text = Convert::ToString(score);
 
-			 // деактивировать кнопку "проверить"
+			 // РґРµР°РєС‚РёРІРёСЂРѕРІР°С‚СЊ РєРЅРѕРїРєСѓ "РїСЂРѕРІРµСЂРёС‚СЊ"
 			 this->button3->Enabled = false;
 
 			 int try_count = Convert::ToInt16(this->label6->Text);
-			 // уменьшить количество попыток
+			 // СѓРјРµРЅСЊС€РёС‚СЊ РєРѕР»РёС‡РµСЃС‚РІРѕ РїРѕРїС‹С‚РѕРє
 			 this->label6->Text = Convert::ToString(--try_count);
-			 // если закончились попытки - деактивировать кнопку "заново"
+			 // РµСЃР»Рё Р·Р°РєРѕРЅС‡РёР»РёСЃСЊ РїРѕРїС‹С‚РєРё - РґРµР°РєС‚РёРІРёСЂРѕРІР°С‚СЊ РєРЅРѕРїРєСѓ "Р·Р°РЅРѕРІРѕ"
 			 if (try_count == 0) {
 				 this->button2->Enabled = false;
 			 }
 	}
 
-	// нажата кнопка "ввести ответы"; переход в состояние "ввод"
+	// РЅР°Р¶Р°С‚Р° РєРЅРѕРїРєР° "РІРІРµСЃС‚Рё РѕС‚РІРµС‚С‹"; РїРµСЂРµС…РѕРґ РІ СЃРѕСЃС‚РѕСЏРЅРёРµ "РІРІРѕРґ"
 	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
 		this->label1->Visible = false;
 		this->label2->Visible = false;
@@ -439,13 +439,13 @@ namespace AttentionTest {
 		this->numericUpDown2->Value = 0;
 		this->numericUpDown3->Value = 0;
 
-		// деактивировать кнопку "ввести ответы"
+		// РґРµР°РєС‚РёРІРёСЂРѕРІР°С‚СЊ РєРЅРѕРїРєСѓ "РІРІРµСЃС‚Рё РѕС‚РІРµС‚С‹"
 		this->button4->Enabled = false;
-		// активировать кнопку "проверить"
+		// Р°РєС‚РёРІРёСЂРѕРІР°С‚СЊ РєРЅРѕРїРєСѓ "РїСЂРѕРІРµСЂРёС‚СЊ"
 		this->button3->Enabled = true;
 	}
 	
-	// следующие методы выделяют содержимое поля ввода при переходе фокуса по Tab
+	// СЃР»РµРґСѓСЋС‰РёРµ РјРµС‚РѕРґС‹ РІС‹РґРµР»СЏСЋС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ РїРѕР»СЏ РІРІРѕРґР° РїСЂРё РїРµСЂРµС…РѕРґРµ С„РѕРєСѓСЃР° РїРѕ Tab
 	private: System::Void numericUpDown1_Enter(System::Object^  sender, System::EventArgs^  e) {
 		this->numericUpDown1->Select(0, this->numericUpDown1->Text->Length);
 	}
@@ -456,7 +456,7 @@ namespace AttentionTest {
 		this->numericUpDown3->Select(0, this->numericUpDown3->Text->Length);
 	}
 
-	// следующие три метода выделяют содержимое поля ввода при клике левой кнопкой мыши
+	// СЃР»РµРґСѓСЋС‰РёРµ С‚СЂРё РјРµС‚РѕРґР° РІС‹РґРµР»СЏСЋС‚ СЃРѕРґРµСЂР¶РёРјРѕРµ РїРѕР»СЏ РІРІРѕРґР° РїСЂРё РєР»РёРєРµ Р»РµРІРѕР№ РєРЅРѕРїРєРѕР№ РјС‹С€Рё
 	private: System::Void numericUpDown1_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 		this->numericUpDown1->Select(0, this->numericUpDown1->Text->Length);
 	}
