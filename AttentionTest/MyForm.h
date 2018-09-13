@@ -52,13 +52,17 @@ namespace AttentionTest {
 	private: System::Windows::Forms::Label^  label6;
 	private: System::Windows::Forms::Label^  label7;
 	private: System::Windows::Forms::Label^  label8;
+	private: System::Windows::Forms::Timer^  timer1;
+	private: System::Windows::Forms::ProgressBar^  progressBar1;
+	private: System::Windows::Forms::Timer^  timer2;
+	private: System::ComponentModel::IContainer^  components;
 	protected:
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -67,6 +71,7 @@ namespace AttentionTest {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->label3 = (gcnew System::Windows::Forms::Label());
@@ -83,6 +88,9 @@ namespace AttentionTest {
 			this->label6 = (gcnew System::Windows::Forms::Label());
 			this->label7 = (gcnew System::Windows::Forms::Label());
 			this->label8 = (gcnew System::Windows::Forms::Label());
+			this->timer1 = (gcnew System::Windows::Forms::Timer(this->components));
+			this->progressBar1 = (gcnew System::Windows::Forms::ProgressBar());
+			this->timer2 = (gcnew System::Windows::Forms::Timer(this->components));
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown1))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown2))->BeginInit();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->numericUpDown3))->BeginInit();
@@ -135,7 +143,7 @@ namespace AttentionTest {
 			this->button2->Name = L"button2";
 			this->button2->Size = System::Drawing::Size(160, 25);
 			this->button2->TabIndex = 4;
-			this->button2->Text = L"Заново";
+			this->button2->Text = L"Следующий/заново";
 			this->button2->UseVisualStyleBackColor = true;
 			this->button2->Click += gcnew System::EventHandler(this, &MyForm::button2_Click);
 			// 
@@ -249,11 +257,29 @@ namespace AttentionTest {
 			this->label8->TabIndex = 15;
 			this->label8->Text = L"0";
 			// 
+			// timer1
+			// 
+			this->timer1->Interval = 3000;
+			this->timer1->Tick += gcnew System::EventHandler(this, &MyForm::timer1_Tick);
+			// 
+			// progressBar1
+			// 
+			this->progressBar1->Location = System::Drawing::Point(17, 69);
+			this->progressBar1->Maximum = 90;
+			this->progressBar1->Name = L"progressBar1";
+			this->progressBar1->Size = System::Drawing::Size(161, 16);
+			this->progressBar1->TabIndex = 16;
+			// 
+			// timer2
+			// 
+			this->timer2->Tick += gcnew System::EventHandler(this, &MyForm::timer2_Tick);
+			// 
 			// MyForm
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(196, 288);
+			this->Controls->Add(this->progressBar1);
 			this->Controls->Add(this->label8);
 			this->Controls->Add(this->label7);
 			this->Controls->Add(this->label6);
@@ -320,16 +346,24 @@ namespace AttentionTest {
 
 		// сделать кнопку "начать тест" неактивной
 		this->button1->Enabled = false;
-		// активировать кнопку "заново"
+		// активировать кнопку "Следующий"
 		this->button2->Enabled = true;
 		// активировать кнопку "ввести ответы"
 		this->button4->Enabled = true;
 
 		// убрать возможность задавать уровень сложности
 		this->comboBox1->Enabled = false;
+
+		// запустить таймер экспозиции на 10-секундный интервал
+		this->timer1->Interval = 10000;
+		this->timer1->Start();
+
+		// запустить таймер отображения времени
+		this->progressBar1->Enabled = true;
+		this->timer2->Start();
 	}
 
-	// нажата кнопка "заново"
+	// нажата кнопка "Следующий"
 	private: System::Void button2_Click(System::Object^  sender, System::EventArgs^  e) {
 		int try_count = Convert::ToInt16(this->label6->Text);
 		// скрыть значения для запоминания
@@ -351,78 +385,84 @@ namespace AttentionTest {
 
 		// разрешить задавать уровень сложности
 		this->comboBox1->Enabled = true;
+
+		// остановить таймер экспозиции
+		this->timer1->Stop();
+
+		// остановить таймер отображения времени
+		this->timer2->Stop();
+		this->progressBar1->Value = 0;
 	}
 
 	// нажата кнопка "проверить"
 	private: System::Void button3_Click(System::Object^  sender, System::EventArgs^  e) {
-			 String^ result1 = Convert::ToString(this->numericUpDown1->Value);
-			 String^ result2 = Convert::ToString(this->numericUpDown2->Value);
-			 String^ result3 = Convert::ToString(this->numericUpDown3->Value);
+		String^ result1 = Convert::ToString(this->numericUpDown1->Value);
+		String^ result2 = Convert::ToString(this->numericUpDown2->Value);
+		String^ result3 = Convert::ToString(this->numericUpDown3->Value);
 
-			 // получить текущее значение счёта и уровня сложности
-			 int score = Convert::ToInt16(this->label8->Text);
-			 int level = this->comboBox1->SelectedIndex;
+		// получить текущее значение счёта и уровня сложности
+		int score = Convert::ToInt16(this->label8->Text);
+		int level = this->comboBox1->SelectedIndex;
 
-			 // показать исходные значения для запоминания
-			 this->label1->Visible = true;
-			 this->label2->Visible = true;
-			 this->label3->Visible = true;
+		// показать исходные значения для запоминания
+		this->label1->Visible = true;
+		this->label2->Visible = true;
+		this->label3->Visible = true;
 
-			 // убрать возможность изменять данные, введённые пользователем
-			 this->numericUpDown1->Enabled = false;
-			 this->numericUpDown2->Enabled = false;
-			 this->numericUpDown3->Enabled = false;
+		// убрать возможность изменять данные, введённые пользователем
+		this->numericUpDown1->Enabled = false;
+		this->numericUpDown2->Enabled = false;
+		this->numericUpDown3->Enabled = false;
 
-			 int correct = 0;
-			 if (result1->CompareTo (this->label1->Text) == 0) {
-				 correct += 1;
-				 this->label1->BackColor = System::Drawing::Color::LightGreen;
-			 }
-			 else {
-				 this->label1->BackColor = System::Drawing::Color::Orange;
-			 }
+		int correct = 0;
+		if (result1->CompareTo(this->label1->Text) == 0) {
+			correct += 1;
+			this->label1->BackColor = System::Drawing::Color::LightGreen;
+		}
+		else {
+			this->label1->BackColor = System::Drawing::Color::Orange;
+		}
 
-			 if (result2->CompareTo(this->label2->Text) == 0) {
-				 correct += 1;
-				 this->label2->BackColor = System::Drawing::Color::LightGreen;
-			 }
-			 else {
-				 this->label2->BackColor = System::Drawing::Color::Orange;
-			 }
+		if (result2->CompareTo(this->label2->Text) == 0) {
+			correct += 1;
+			this->label2->BackColor = System::Drawing::Color::LightGreen;
+		}
+		else {
+			this->label2->BackColor = System::Drawing::Color::Orange;
+		}
 
-			 if (result3->CompareTo(this->label3->Text) == 0) {
-				 correct += 1;
-				 this->label3->BackColor = System::Drawing::Color::LightGreen;
-			 }
-			 else {
-				 this->label3->BackColor = System::Drawing::Color::Orange;
-			 }
+		if (result3->CompareTo(this->label3->Text) == 0) {
+			correct += 1;
+			this->label3->BackColor = System::Drawing::Color::LightGreen;
+		}
+		else {
+			this->label3->BackColor = System::Drawing::Color::Orange;
+		}
 
-			 // для уровня "простой" за каждый правильный ответ одно очко
-			 // для "средний" - 4
-			 // для "сложный" - 9
-			 score += correct * (level + 1) * (level + 1);
-			 // за все три правильные ответа на уровне "простой" - 2 очка,
-			 // на уровне "средний" - 8
-			 // на уровне "сложный" - 18
-			 if (correct == 3) score += 2 * (level + 1) * (level + 1);
-			 // вывести текущий счёт
-			 this->label8->Text = Convert::ToString(score);
+		// для уровня "простой" за каждый правильный ответ одно очко
+		// для "средний" - 4
+		// для "сложный" - 9
+		score += correct * (level + 1) * (level + 1);
+		// за все три правильные ответа на уровне "простой" - 2 очка,
+		// на уровне "средний" - 8
+		// на уровне "сложный" - 18
+		if (correct == 3) score += 2 * (level + 1) * (level + 1);
+		// вывести текущий счёт
+		this->label8->Text = Convert::ToString(score);
 
-			 // деактивировать кнопку "проверить"
-			 this->button3->Enabled = false;
+		// деактивировать кнопку "проверить"
+		this->button3->Enabled = false;
 
-			 int try_count = Convert::ToInt16(this->label6->Text);
-			 // уменьшить количество попыток
-			 this->label6->Text = Convert::ToString(--try_count);
-			 // если закончились попытки - деактивировать кнопку "заново"
-			 if (try_count == 0) {
-				 this->button2->Enabled = false;
-			 }
+		int try_count = Convert::ToInt16(this->label6->Text);
+		// уменьшить количество попыток
+		this->label6->Text = Convert::ToString(--try_count);
+		// если закончились попытки - деактивировать кнопку "Следующий"
+		if (try_count == 0) {
+			this->button2->Enabled = false;
+		}
 	}
 
-	// нажата кнопка "ввести ответы"; переход в состояние "ввод"
-	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+	private: System::Void enter_results(void) {
 		this->label1->Visible = false;
 		this->label2->Visible = false;
 		this->label3->Visible = false;
@@ -443,6 +483,18 @@ namespace AttentionTest {
 		this->button4->Enabled = false;
 		// активировать кнопку "проверить"
 		this->button3->Enabled = true;
+
+		// остановить таймер экпозиции; вводим значения
+		this->timer1->Stop();
+
+		// остановить таймер отображения времени
+		this->timer2->Stop();
+		this->progressBar1->Value = 0;
+	}
+
+	// нажата кнопка "ввести ответы"; переход в состояние "ввод"
+	private: System::Void button4_Click(System::Object^  sender, System::EventArgs^  e) {
+		enter_results();
 	}
 	
 	// следующие методы выделяют содержимое поля ввода при переходе фокуса по Tab
@@ -465,6 +517,12 @@ namespace AttentionTest {
 	}
 	private: System::Void numericUpDown3_MouseClick(System::Object^  sender, System::Windows::Forms::MouseEventArgs^  e) {
 		this->numericUpDown3->Select(0, this->numericUpDown3->Text->Length);
+	}
+	private: System::Void timer1_Tick(System::Object^  sender, System::EventArgs^  e) {
+		enter_results();
+	}
+	private: System::Void timer2_Tick(System::Object^  sender, System::EventArgs^  e) {
+		if (this->progressBar1->Value < this->progressBar1->Maximum) this->progressBar1->Value++;
 	}
 };
 }
